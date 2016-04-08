@@ -1,0 +1,23 @@
+General:
+    - He añadido en todos los scripts una función llamada error_ayuda que en el
+    caso de que los argumentos estén mal, devolverá la ayuda y una explicación
+    de qué está mal en los parámetros. Este error se redirige al stderr.
+
+
+Ejercicio 2:
+    - Añadido control en las variables umbral para asegurar que umbral1 es menor
+    que umbral2
+
+Ejercicio 3:
+    - Añadido control en la carpeta de destino. Si ya existe se pregunta al usu-
+    ario si desea sobreescribirla o no.
+    - Los pasos 2 y 3 recomendados en el enunciado de la práctica se hacen a la
+    vez, ya que al listar un directorio con find, antes de devolver el nombre de
+    un archivo, devuelve el de su carpeta.
+
+Ejercicio 5:
+    - Para hacerlo más modular, se hace uso de una función llamada comparar que
+    comparará cada clave generada en el for con la pasada como argumento.
+
+Ejercicio 6:
+    - Cuando se convierten las imágenes, se almacenan temporalmente en /tmp/
