@@ -1,0 +1,10 @@
+
+Informe de rendimiento:
+Este informe recoge todas las posibles formas de encontrar los patrones de series temporales de series.tdf que nos interesan.
+Los ficheros que han sido utilizados son
+nueva.jpg
+anterior.jpg
+reemplaza.jpg
+Y algunos mas que no se contemplan.
+No hay mas ficheros posibles.
+Con esto terminamos
