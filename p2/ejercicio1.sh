@@ -43,7 +43,6 @@ else
     bytes=0
 fi
 
-echo "Carpeta;Nombre;Tamaño;ReferenciasInodo;Permisos;Ejecutable"
 # Recorremos todos los archivos de la carpeta comprobando que el número de bytes
 # sea mayor que el deseado.
 for x in $(find ${1} -size +${bytes}c)
@@ -58,7 +57,10 @@ do
     # Solo procesamos archivos, no carpetas.
     if [ ! -d $x ]
     then
-        echo "`dirname $x`;`basename $x`;`stat -c%s $x`;`stat -c%h $x`;`stat -c%A\
- $x`;$ejecutable"
+        aux=${aux}"`dirname $x`;`basename $x`;`stat -c%s $x`;`stat -c%h $x`;`stat -c%A\
+ $x`;$ejecutable\n"
     fi
 done
+
+echo "Carpeta;Nombre;Tamaño;ReferenciasInodo;Permisos;Ejecutable"
+echo -e $aux | sort -rnk 3 -t ';'
