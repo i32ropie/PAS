@@ -27,7 +27,7 @@ directorios=0
 ejecutables=0
 binsh=0
 binbash=0
-for x in $(find $1/etc)
+for x in $(find $1)
 do
     if [ -d $x ]
     then
