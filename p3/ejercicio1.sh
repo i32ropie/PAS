@@ -33,18 +33,22 @@ separador 2 "Cadenas que producen las series"
 cat $1 | egrep '^\*'
 
 separador 3 "Cadenas que producen las series sin asteriscos ni espacios"
-cat $1 | sed -nre 's/^\* ([A-Z]+) \*/\1/p'
+cat $1 | egrep '^\* [A-Z]+ \*$' | egrep -o '[A-Z]+'
 
 separador 4 "Eliminar las líneas de sinopsis"
-# cat $1 | sed -e '/^SINOPSIS/d'
 cat $1 | egrep -v '^SINOPSIS'
 
 separador 5 "Eliminar líneas vacías"
-# cat $1 | sed -e '/^$/d'
 cat $1 | egrep -v '^$'
 
 separador 6 "Contar cuántas series produce cada cadena"
-cat $1 | sed -rne 's/\* ([A-Z]+) \*/\1/p' | sort | uniq -c | sed -rne 's/.+([0-9]) ([A-Z]+)/La cadena \2 produce \1 series:/p'
+OLDIFS=$IFS
+IFS=$'\n'
+for x in $(cat $1 | egrep '^\* [A-Z]+ \*$' | egrep -o '[A-Z]+' | sort | uniq -c)
+do
+    echo "La cadena $(echo $x | egrep -o '[A-Z]+') produce $(echo $x | egrep -o '[0-9]+') series:"
+done
+IFS=$OLDIFS
 
 separador 7 "Lı́neas que lı́neas que contengan una palabra en mayúsculas entre paréntesis"
 cat $1 | egrep '\(.*[A-Z][a-z]+.*\)'
