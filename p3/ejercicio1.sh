@@ -59,5 +59,5 @@ cat $1 | egrep -o '( [^ ]+ ).*\1'
 separador 9 "Líneas que contienen 28 aes o más"
 cat $1 | egrep '(.*[Aa].*){28}'
 
-serparador 10 "Nombre de película y temporadas"
+separador 10 "Nombre de película y temporadas"
 cat $1 | egrep '^=' -C 1
