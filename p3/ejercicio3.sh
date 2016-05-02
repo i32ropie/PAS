@@ -24,7 +24,7 @@ fi
 
 echo -e "${N}${R}====${n}"
 echo -e "${S}Listado de archivos ocultos del directorio /home/$USER${n}${N}"
-ls -a ~ | egrep '^\.' | awk '{print length($0)"\t"$0}' | sort -n | cut --complement -f1
+ls -a ~ | egrep '^\.' | awk '{print length($0)"\t"$0}' | sort -n | cut -f2
 
 echo -e "${N}${R}====${n}"
 echo -e "El fichero a procesar es ${S}$1${n}"

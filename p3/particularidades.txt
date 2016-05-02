@@ -1,0 +1,39 @@
+General:
+    - Al igual que en la práctica 2, hago uso de una función auxiliar con la que
+    compruebo que los argumentos de los scripts sean correctos.
+
+
+Ejercicio 1:
+    - Algunas cosas las empecé a hacer usando 'sed' y al cambiarlas para usar
+    'egrep', vi que 'sed' parece mucho más potente.
+
+Ejercicio 2:
+    - Para este ejercicio, fui usando el comando 'sed' una y otra vez pasando
+    la salida de cada uno como entrada de otro mediante tuberías.
+
+Ejercicio 3:
+    - Para mostrar los ficheros ocultos en orden según la longitud del nombre,
+    usé el tratamiento de cadenas del comando 'awk' para ver la longitud, luego
+    ordené numéricamente la salida y me fui quedando con la segunda columna, la
+    que contiene el nombre de los ficheros. Idea sacada de:
+        http://stackoverflow.com/a/9870181
+
+Ejercicio 4:
+    - Para sacar el título busco la primera línea que acabe con dos puntos.
+    Idea sacada de :
+        http://stackoverflow.com/a/9453461
+
+Ejercicio 6:
+    - En el orden, compruebo el tipo de archivo en ese orden ya que los enlaces
+    simbólicos también son ejecutables, por lo que así evito que haya más
+    ejecutables de los que debería.
+    - Mientras programa el último apartado de este ejercicio, llegué al 'echo'
+    de la línea 81 y pensé si existiría en bash algún tipo de dato como los
+    diccionarios de Python y encontré en StackOverflow cómo hacerlo. En la línea
+    61 declaro un array asociativo para hacer más cómodo el 'echo' de la línea
+    81. Idea sacada de:
+        http://stackoverflow.com/a/3467959
+    - En ese mismo apartado, busqué cómo obtener partes de cadenas en bash para
+    poder usar el array asociativo y obtener también la prioridad (Líneas 75, 78
+    y 79). Idea sacada de:
+        http://stackoverflow.com/a/10218528
