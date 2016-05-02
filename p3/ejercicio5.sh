@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Nombre : ejercicio5.sh
+# Autor  : Eduardo Roldán Pijuán
+
 cat /proc/cpuinfo | sort | uniq | sed -nre 's/^model name.*: (.*)/Modelo del procesador: \1/p'
 cat /proc/cpuinfo | sort | uniq | sed -nre '0,/^cpu MHz/{s/^cpu MHz.*: (.*)$/Megahercios: \1/p}'
 echo "TODO: Número máximo de hilos de ejecución."

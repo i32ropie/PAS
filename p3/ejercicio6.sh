@@ -1,6 +1,26 @@
 #!/bin/bash
 
-echo "TODO: COMPROBACIONES"
+# Nombre : ejercicio6.sh
+# Autor  : Eduardo Roldán Pijuán
+
+# Variables de formateo de texto.
+n='\e[m'    # Nada (Limpia efectos)
+N='\e[1m'   # Negrita
+S='\e[4m'   # Subrayado
+R='\e[31m'  # Rojo
+
+# Función que se ejecuta cuando hay un error en los parámetros y muestra la ayuda.
+function error_ayuda() {
+    echo -e "${R}${N}[Error]${n} - La sintaxis del programa es:\n\n\t${N}./ejerci\
+cicio6.sh directorio${n}\n\n${N}directorio${n} : Directorio sobre el que ejecutar\
+ el script (${S}obligatorio${n})." >&2
+    exit 1
+}
+
+if [ $# -ne 1 ] || [ ! -d $1 ]
+then
+    error_ayuda
+fi
 
 enlaces_simbolicos=0
 directorios=0
@@ -28,20 +48,15 @@ do
     fi
 done
 
-echo "*****************************"
-echo "Número de enlaces simbólicos: $enlaces_simbolicos"
-echo "Número de directorios: $directorios"
-echo "Número de ficheros convencionales ejecutables: $ejecutables"
-echo "*****************************"
-echo "El listado de los intérpretes en $1/etc/init.d/ es:"
-echo "- Hay $binbash scripts con intérprete /bin/bash"
-echo "- Hay $binsh scripts con intérprete /bin/sh"
-echo "*****************************"
-# echo "enlaces_simbolicos: $enlaces_simbolicos"
-# echo "directorios: $directorios"
-# echo "ejecutables: $ejecutables"
-# echo "/bin/bash: $binbash"
-# echo "/bin/sh: $binsh"
+echo -e "${N}${R}*****************************${n}"
+echo -e "Número de enlaces simbólicos: ${N}$enlaces_simbolicos${n}"
+echo -e "Número de directorios: ${N}$directorios${n}"
+echo -e "Número de ficheros convencionales ejecutables: ${N}$ejecutables${n}"
+echo -e "${N}${R}*****************************${n}"
+echo -e "El listado de los intérpretes en ${N}$1/etc/init.d/${n} es:"
+echo -e "- Hay ${N}$binbash${n} scripts con intérprete ${N}/bin/bash${n}"
+echo -e "- Hay ${N}$binsh${n} scripts con intérprete ${N}/bin/sh${n}"
+echo -e "${N}${R}*****************************${n}"
 
 declare -A orden=( ["S"]="Arranque" ["K"]="Parada" )
 
@@ -50,8 +65,8 @@ do
     if [ ! -d $x ]
     then
         script_padre_nombre=$(basename $x)
-        echo "----------"
-        echo "Script $script_padre_nombre"
+        echo -e "${N}----------${n}"
+        echo -e "Script ${N}$script_padre_nombre${n}"
         for y in $(find $1/etc/rc?.d)
         do
             if [ ! -d $y ]
@@ -63,7 +78,7 @@ do
                     script_hijo_orden=${script_hijo:0:1}
                     script_hijo_prioridad=${script_hijo:1:2}
                     nivel=$(echo $y | sed -re 's/.*rc(.)\.d.*$/\1/')
-                    echo "Nivel $nivel: ${orden[$script_hijo_orden]} con prioridad $script_hijo_prioridad"
+                    echo -e "${S}Nivel $nivel${n}: ${N}${orden[$script_hijo_orden]}${n} con prioridad ${N}$script_hijo_prioridad${n}"
                 fi
             fi
         done
