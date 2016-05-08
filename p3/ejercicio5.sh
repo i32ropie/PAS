@@ -9,4 +9,4 @@ cat /proc/cpuinfo | sort | uniq | cut -f1 | uniq -c | sed -nre 's/^ *([0-9]+) pr
 echo "Puntos de montaje:"
 cat /proc/mounts | sed -nre 's/^([^ ]+) ([^ ]+) ([^ ]+) .*$/-> Punto de montaje: \2, Dispositivo: \1, Tipo de dispositivo: \3/p'
 echo "Particiones y número de bloques:"
-cat /proc/partitions | sed -nre '3,$s/^ +[0-9]+ +[0-9]+ +([0-9]+) +(.*)$/-> Partición: \2, Número de bloques: \1/p'
+cat /proc/partitions | sed -nre '3,$s/^ +[0-9]+ +[0-9]+ +([0-9]+) +(.*)$/-> Partición: \2, Número de bloques: \1/p' | sort -nrk7
